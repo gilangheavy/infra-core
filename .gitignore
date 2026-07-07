@@ -1,0 +1,13 @@
+# Environment Variables
+.env
+.env.*
+!.env.example
+
+# Traefik Let's Encrypt
+traefik/letsencrypt/
+acme.json
+
+# IDEs and OS files
+.vscode/
+.idea/
+.DS_Store

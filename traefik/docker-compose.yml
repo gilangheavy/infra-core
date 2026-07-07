@@ -1,0 +1,31 @@
+services:
+  traefik:
+    image: traefik:3.7.6
+    container_name: traefik
+    command:
+      # Enable Traefik Dashboard (dashboard is available at http://localhost:8080)
+      - "--api.insecure=true"
+      # Enable Docker provider
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      # Define entry points for HTTP and HTTPS
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      # Enable Let's Encrypt / ACME for automatic SSL certificates
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.email=${TRAEFIK_EMAIL}"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./letsencrypt:/letsencrypt
+    networks:
+      - traefik-net
+    restart: always
+
+networks:
+  traefik-net:
+    external: true

@@ -1,0 +1,22 @@
+services:
+  mariadb:
+    image: mariadb:12
+    container_name: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "${MARIADB_PORT}:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    restart: always
+    networks:
+      - traefik-net
+
+networks:
+  traefik-net:
+    external: true
+
+volumes:
+  mariadb_data:
+    external: true
+    name: infrastructure_mariadb_data
