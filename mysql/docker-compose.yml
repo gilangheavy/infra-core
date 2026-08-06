@@ -1,0 +1,22 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "${MYSQL_PORT}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: always
+    networks:
+      - traefik-net
+
+networks:
+  traefik-net:
+    external: true
+
+volumes:
+  mysql_data:
+    external: true
+    name: infrastructure_mysql_data

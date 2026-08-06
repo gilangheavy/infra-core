@@ -6,6 +6,7 @@ This repository contains Docker Compose configurations for various infrastructur
 
 - **MariaDB** (Port 3306)
 - **MinIO** (Ports 9000, 9001)
+- **MySQL** (Port 3306)
 - **PostgreSQL** (Port 5432)
 - **RabbitMQ** (Ports 5672, 15672)
 - **Redis** (Port 6379)
@@ -35,6 +36,7 @@ To ensure data persistence, the services use external Docker volumes. Create the
 ```bash
 docker volume create infrastructure_mariadb_data
 docker volume create infrastructure_minio_data
+docker volume create infrastructure_mysql_data
 docker volume create infrastructure_postgres_data
 docker volume create infrastructure_rabbitmq_data
 docker volume create infrastructure_redis_data
@@ -56,6 +58,13 @@ MYSQL_ROOT_PASSWORD=your_secure_password
 ```env
 MINIO_ROOT_USER=admin
 MINIO_ROOT_PASSWORD=your_secure_password
+```
+
+**MySQL (`mysql/.env`):**
+
+```env
+MYSQL_PORT=3306
+MYSQL_ROOT_PASSWORD=your_secure_password
 ```
 
 **PostgreSQL (`postgres/.env`):**
@@ -82,9 +91,24 @@ _Note: Redis does not require any environment variables by default._
 
 ## Usage
 
+### Using Scripts (Start / Stop All Services)
+
+You can manage all services at once using the helper scripts in the root directory:
+
+- **Start all services**:
+  ```bash
+  ./start.sh
+  ```
+- **Stop all services**:
+  ```bash
+  ./stop.sh
+  ```
+
+### Manual Usage (Individual Services)
+
 To start a specific service, navigate to its directory and run `docker compose up -d`.
 
-For example, to start Traefik and PostgreSQL:
+For example, to start Traefik and MySQL:
 
 ```bash
 # Start Traefik
@@ -92,8 +116,8 @@ cd traefik
 docker compose up -d
 cd ..
 
-# Start PostgreSQL
-cd postgres
+# Start MySQL
+cd mysql
 docker compose up -d
 cd ..
 ```

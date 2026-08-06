@@ -11,6 +11,7 @@ echo "Creating external volumes..."
 volumes=(
     "infrastructure_mariadb_data"
     "infrastructure_minio_data"
+    "infrastructure_mysql_data"
     "infrastructure_postgres_data"
     "infrastructure_rabbitmq_data"
     "infrastructure_redis_data"
@@ -22,7 +23,7 @@ done
 
 # 3. Setup .env files if they don't exist
 echo "Checking .env files..."
-services=("mariadb" "minio" "postgres" "rabbitmq" "redis" "traefik")
+services=("mariadb" "minio" "mysql" "postgres" "rabbitmq" "redis" "traefik")
 
 for service in "${services[@]}"; do
     if [ ! -f "$service/.env" ]; then
