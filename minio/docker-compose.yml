@@ -22,4 +22,4 @@ networks:
 volumes:
   minio_data:
     external: true
-    name: infrastructure_minio_data
+    name: minio_data

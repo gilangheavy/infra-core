@@ -19,4 +19,4 @@ networks:
 volumes:
   mariadb_data:
     external: true
-    name: infrastructure_mariadb_data
+    name: mariadb_data

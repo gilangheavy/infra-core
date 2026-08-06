@@ -34,12 +34,12 @@ docker network create traefik-net
 To ensure data persistence, the services use external Docker volumes. Create them by running:
 
 ```bash
-docker volume create infrastructure_mariadb_data
-docker volume create infrastructure_minio_data
-docker volume create infrastructure_mysql_data
-docker volume create infrastructure_postgres_data
-docker volume create infrastructure_rabbitmq_data
-docker volume create infrastructure_redis_data
+docker volume create mariadb_data
+docker volume create minio_data
+docker volume create mysql_data
+docker volume create postgres_data
+docker volume create rabbitmq_data
+docker volume create redis_data
 ```
 
 ### 3. Setup Environment Variables

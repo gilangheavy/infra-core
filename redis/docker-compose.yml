@@ -20,4 +20,4 @@ networks:
 volumes:
   redis_data:
     external: true
-    name: infrastructure_redis_data
+    name: redis_data

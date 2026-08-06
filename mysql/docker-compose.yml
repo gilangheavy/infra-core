@@ -19,4 +19,4 @@ networks:
 volumes:
   mysql_data:
     external: true
-    name: infrastructure_mysql_data
+    name: mysql_data

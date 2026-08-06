@@ -21,4 +21,4 @@ networks:
 volumes:
   rabbitmq_data:
     external: true
-    name: infrastructure_rabbitmq_data
+    name: rabbitmq_data

@@ -9,12 +9,12 @@ docker network inspect traefik-net >/dev/null 2>&1 || docker network create trae
 # 2. Create Volumes
 echo "Creating external volumes..."
 volumes=(
-    "infrastructure_mariadb_data"
-    "infrastructure_minio_data"
-    "infrastructure_mysql_data"
-    "infrastructure_postgres_data"
-    "infrastructure_rabbitmq_data"
-    "infrastructure_redis_data"
+    "mariadb_data"
+    "minio_data"
+    "mysql_data"
+    "postgres_data"
+    "rabbitmq_data"
+    "redis_data"
 )
 
 for volume in "${volumes[@]}"; do

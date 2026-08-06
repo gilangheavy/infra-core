@@ -20,4 +20,4 @@ networks:
 volumes:
   postgres_data:
     external: true
-    name: infrastructure_postgres_data
+    name: postgres_data
